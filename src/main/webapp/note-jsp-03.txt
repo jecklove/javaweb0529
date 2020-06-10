@@ -1,0 +1,50 @@
+JSP：
+		10.jsp的动作标签
+			转发动作标签：<jsp:forward page="目标页面路径"></jsp:forward>
+			动态包含标签：<jsp:include page="目标页面路径"></jsp:include>
+			
+		11.动态包含和静态包含的区别
+			动态包含：
+				使用jsp动作标签：<jsp:include page="目标页面路径"></jsp:include>
+				两个jsp页面会独立翻译成java文件然后编译执行。
+				在运行时，将目标页面的视图显示到本页面中来。
+				动态包含不会真实的引入代码，而是引入视图。
+			静态包含：
+				使用jsp指令：<%@include file="相对路径或者内部路径"%>
+				将目标页面的代码全部引入本页面。
+				然后只翻译本页面为java文件，最后编译执行。
+				静态包含会真实的引入代码。
+				
+		12.application域的实例：
+			网站访问量粗略统计：
+				1.如果使用数据库记录访问量：
+					优点：可以持久化保存数据
+					缺点：效率低、浪费系统资源
+				2.application记录访问量：
+					优点：效率高、节约系统资源
+					缺点：项目重启，数据丢失
+					
+		13.session域的实例（非常重要）：
+			1.保存在线用户的信息。
+				把user对象存放到session域中。
+			2.判断用户是否登录：
+				已经登录，跳转到主页。
+				未登录，跳转到登录页。
+			3.实现权限：
+				1.视图权限：例如权限不够看不见操作按钮。
+				2.接口权限：权限不够不能请求相应的路径。
+			4.补充：
+				1.当浏览器连接上(第一次请求)服务器以后，服务器会生成一个JSESSIONID在浏览器的Cookie中。
+				2.本次会话该浏览器每次请求服务器都会在请求头中将这个JSESSIONID带上。
+				3.如此，我们服务器就可以根据JSESSIONID判断是否是同义词会话。
+				
+				两个Chrome窗口：
+					JSESSIONID=node01ubjj39160wfqy1bjmg5c2vi1.node0;
+					JSESSIONID=node01ubjj39160wfqy1bjmg5c2vi1.node0;
+				IE窗口：
+					JSESSIONID=node01s1plox44l5lak2iumyl8ghcy2.node0;
+				重启后的Chrome窗口：
+					JSESSIONID=node018nb50uc3rv1r51jdv7ayrb9k3.node0;
+					
+					
+					

@@ -1,0 +1,41 @@
+JSP：
+		14.Cookie技术的实例：
+			记住我：保存用户名和密码，浏览器重启用户名和密码会保留，自动填充到表单。
+			注意：
+				1.默认情况下，cookie的存活时间为一次会话（不是0秒），当浏览器关闭，cookie会清除。	
+				2.session中的数据保存在服务器，cookie中的数据保存在浏览器。
+				3.cookie会以文件形式保存在磁盘，浏览器中也可以随时查看到，不安全。
+				4.建议cookie中保存的数据需要加密。
+				5.服务器获取浏览器所有的cookie，只能是本服务器生成的cookie，不能获取到其他服务器的cookie。
+				6.cookie中不允许保存特殊字符，需要遵循RFC6265规范。我们可以使用URLEncoder和URLDecoder对cookie内容进行编码和解码。
+			相关方法：
+				1.创建cookie：
+					Cookie cookie = new Cookie(name, value);
+				2.设置cookie存活时间：
+					cookie.setMaxAge(n秒);
+				3.将cookie保存到浏览器：
+					response.addCookie(cookie);
+				4.获取浏览器中所有的cookie：
+					Cookie[] cookies = request.getCookies();
+					
+		15.jsp中获取一些路径：
+			1.获取项目根路径：
+				request.getContextPath()
+			2.获取当前页面全路径
+				request.getRequestURL()
+			3.项目根路径到当前页面的路径：
+				request.getRequestURI()
+			4.获取页面所在服务器的全路径
+				application.getRealPath("note-jsp-04.txt")
+				
+			补充：
+				jsp页面地址编写原则：
+					1.静态资源：必须以项目根路径开头，例如“/javaweb200529mvn/...”
+					2.转发地址：直接以“/”开头，默认情况下转发中的“/”指的是从项目根路径开始
+					3.重定向：必须以项目根路径开头，例如“/javaweb200529mvn/...”
+				
+				
+				
+				
+					
+					
